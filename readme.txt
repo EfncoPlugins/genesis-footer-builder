@@ -1,5 +1,5 @@
 === Genesis Footer Builder ===
-Contributors: varun21, aniash_29
+Contributors: varun21, aniash_29, ruchika_wp
 Donate Link: 
 Tags: genesis, genesiswp, genesis footer, footer customization
 Requires at least: 3.6
