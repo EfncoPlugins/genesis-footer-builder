@@ -1,30 +1,34 @@
 <?php
 
 /*
+ *	Plugin core file that executes all the plugin functions.
  *
- *	Prevent direct access to this file.
+ *	@since 1.0
  *
  */
 
+ 
+/** Prevent direct access to this file. **/
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( 'Sorry, you are not allowed to access this file directly.' );
 }
 
+
 /**
- *	
  *	@define [gfb-date]
  *	@define [gfb-brand]
  *	@define [gfb-privacy-policy]
  *	@define [gfb-disclaimer]
- *	
+ *	@define [gfb-affiliate-link]
+ *		
  *  Defines the shortcode functions used in the plugin
- *
  */
 
 add_shortcode( 'gfb-date', 'gfb_set_date' );
 add_shortcode( 'gfb-brand', 'gfb_set_brand' );
 add_shortcode( 'gfb-privacy-policy', 'gfb_set_privacy' );
 add_shortcode( 'gfb-disclaimer', 'gfb_set_disclaimer' );
+add_shortcode( 'gfb-affiliate-link', 'gfb_affiliate' );
 
 function gfb_set_date( $atts ) {
 	
@@ -37,11 +41,13 @@ function gfb_set_date( $atts ) {
 	
 	if( $is_set_current )
 		$copy_year = date('Y');
-	else{
+	else {
+		
 		if( !$dt_format )
 			$copy_year = $date;
 		else
 			$copy_year = $date_start .' &dash; '. $date_end;
+	
 	}
 	
 	return $copy_year;
@@ -77,12 +83,19 @@ function gfb_set_disclaimer( $atts ) {
 		
 }
 
+function gfb_affiliate( $atts ) {
+	
+	$link = gfb_get_option( 'gfb_affiliate_link' );
+	if( $link ) {
+		return '<a class="gfb-affiliate-link" title="'. __( 'Powered By Genesis', GFB_PLUGIN_DOMAIN ) .'" href="'. $link .'">'. __( 'Genesis Framework', GFB_PLUGIN_DOMAIN ) .'</a>';
+	}
+	
+}
+
 
 /** 
- *
  *  Registering a footer menu location for the plugin.
  *	The footer menu is enabled by default, hence the location will be available once the plugin is activated
- *
  */
  
 add_action( 'genesis_footer', 'gfb_menu', 5 );
@@ -95,25 +108,32 @@ function gfb_menu() {
 		if ( genesis_superfish_enabled() ) {
 			$class .= ' js-superfish';
 		}
+		
 		$args = array(
+		
 			'theme_location' => 'gfb_footer_menu',
 			'container' => 'genesis-nav-menu',
 			'menu_class' => $class,
 			'depth' => 1,
 			'echo' => 0
+		
 		);
+		
 		$nav  = wp_nav_menu( $args );
 		if ( !$nav ) {
 			return;
 		}
+		
 		$nav_markup_open  = genesis_markup( array(
 			'html5' => '<nav %s>',
 			'xhtml' => '<div id="gfb-menu-footer menu">',
 			'context' => 'footer-menu',
 			'echo' => false 
 		) );
+		
 		$nav_markup_close = genesis_html5() ? '</nav>' : '</div>';
 		$nav_output       = $nav_markup_open . $nav . $nav_markup_close;
+		
 		echo apply_filters( 'genesis_do_nav', $nav_output, $nav, $args );
 		
 	}
@@ -122,9 +142,7 @@ function gfb_menu() {
 
 
 /** 
- *
- *  The main function that outputs the customized text through the 'genesis_footer_output' filter. 
- *
+ *  The main function that outputs the customized text through the 'genesis_footer_output' filter.
  */
 
 function gfb_customized_footer( $genesis_output ) {
@@ -135,37 +153,40 @@ function gfb_customized_footer( $genesis_output ) {
 	$brand 		= '[gfb-brand]';
 	$privacy 	= '[gfb-privacy-policy]';
 	$disclaimer = '[gfb-disclaimer]';
+	$affil_link = '[gfb-affiliate-link]';
 	
 	$privacy_set = gfb_get_option( 'gfb_privacy' );
 	$disclaimer_set = gfb_get_option( 'gfb_disclaimer' );
 	
+	/** Retrieve the plugin's default credits text **/
 	$default_output = gfb_defaults();
-	$default_output = $default_output['gfb_output'];	// Retrieve the plugin's default credits text 
+	$default_output = $default_output['gfb_output']; 
 	
-	if( strcmp( $default_output, $output ) === 0 )	{	// The output has not been customized. Make sure there are no double separator between empty settings.
+	/** The output has not been customized. Make sure there are no double separators between empty settings. **/
+	if( strcmp( $default_output, $output ) === 0 )	{
 
 		if( !$privacy_set && !$disclaimer_set ) {
 			
-			$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved.</p><p>[footer_genesis_link] &bull; [footer_wordpress_link] &bull; [footer_loginout]</p>', GFB_PLUGIN_DOMAIN ), $date, $brand );
+			$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved.</p><p>[gfb-affiliate-link] &bull; [footer_wordpress_link] &bull; [footer_loginout]</p>', GFB_PLUGIN_DOMAIN ), $date, $brand );
 		
 		}
 		else {
 			
 			if( !$disclaimer_set ) {
 				
-				$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved. &bull; %s</p><p>[footer_genesis_link] &bull; [footer_wordpress_link] &bull; [footer_loginout]</p>', GFB_PLUGIN_DOMAIN ), $date, $brand, $privacy );
+				$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved. &bull; %s</p><p>[gfb-affiliate-link] &bull; [footer_wordpress_link] &bull; [footer_loginout]</p>', GFB_PLUGIN_DOMAIN ), $date, $brand, $privacy );
 				
 			}
 			else {
 				
 				if( !$privacy_set ) {
 					
-					$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved. &bull; %s</p><p>[footer_genesis_link] &bull; [footer_wordpress_link] &bull; [footer_loginout]</p>', GFB_PLUGIN_DOMAIN ), $date, $brand, $disclaimer );
+					$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved. &bull; %s</p><p>[gfb-affiliate-link] &bull; [footer_wordpress_link] &bull; [footer_loginout]</p>', GFB_PLUGIN_DOMAIN ), $date, $brand, $disclaimer );
 				
 				}
 				else {
 					
-					$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved. &bull; %s &bull; %s</p><p>[footer_genesis_link"] &bull; [footer_wordpress_link] &bull; [footer_loginout]<p>', GFB_PLUGIN_DOMAIN ), $date, $brand, $privacy, $disclaimer );
+					$genesis_output = sprintf( __( '<p>Copyright &copy; %s &mdash; %s &bull; All rights reserved. &bull; %s &bull; %s</p><p>[gfb-affiliate-link] &bull; [footer_wordpress_link] &bull; [footer_loginout]<p>', GFB_PLUGIN_DOMAIN ), $date, $brand, $privacy, $disclaimer );
 				
 				}
 			
@@ -176,9 +197,11 @@ function gfb_customized_footer( $genesis_output ) {
 	}
 	else {
 
-		return $output;	// The output has been customized. Output as is.
+		/** The output has been customized. Output as is **/
+		return $output;
 		
 	}
 	
 	return  $genesis_output;	
+
 }

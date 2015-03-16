@@ -1,7 +1,9 @@
 @charset "UTF-8";
 /**
  *
- *	This file is used for Genesis Footer Builder plugin styles.
+ *	Admin page styles for the plugin
+ *
+ *	@since 1.0
  *
  **/
  
@@ -50,6 +52,12 @@
 	position: absolute;
 	left: 750px;
 	top: 10px;
+}
+
+.gfb-sb-creds {
+	border-top: 1px solid #bfbfbf;
+	padding: 10px 0 0;
+	margin-top: 10px;
 }
 
 #tab-panel-gfb-ht-shortcodes dt {
