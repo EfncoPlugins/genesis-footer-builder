@@ -1,10 +1,9 @@
 === Genesis Footer Builder ===
 Contributors: varun21, aniash_29, ruchika_wp
-Donate Link: 
 Tags: genesis, genesiswp, genesis footer, footer customization
 Requires at least: 3.6
-Tested up to: 4.1
-Stable tag: 1.0
+Tested up to: 4.1.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,6 +24,7 @@ You can configure the options and go with the plugin default credits text or you
 1. Specify custom brand name for use in the footer credits, which otherwise defaults to the site title.
 1. Specify the copyright year or duration to be included in the copyright notice. Defaults to current year.
 1. Select and set *Privacy Policy* and *Disclaimer* pages from the dropdown for use in the footer information.
+1. Set Genesis Affiliate link to be used in the footer credits text.
 1. Customize the footer credits text completely (in case the plugin's default credits text doesn't work for you).
 1. Set-up and display a footer menu on the site.
 
@@ -49,7 +49,18 @@ Or you can follow the steps given below:
 1. Set up the options as required.
 1. Save the changes.
 
+== Screenshots ==
+
+1. Genesis Footer Builder: Brand name and copyrights duration
+1. Genesis Footer Builder: Select Privacy policy and Disclaimer pages
+1. Genesis Footer Builder: Register and insert the footer menu
+1. Genesis Footer Builder: Custom Footer Copyrights area
+
 == Frequently Asked Questions ==
+
+= How do I set-up my own Genesis affiliate link and use it in the footer? =
+
+Genesis Footer Builder now provides you an option to set-up affiliate link for Genesis that can be displayed in the footer credits text. Use the *Genesis Affiliate Link* option on the plugin's page to set your own affiliate link and use the **[gfb-affiliate-link]** shortcode in the *Custom Footer Copyrights* field to output the link.
 
 = All my pages are not listed in the dropdown. Where are the other pages that I've created? =
 
@@ -78,14 +89,25 @@ Add the following to *Custom Footer Copyrights* textarea:
 The copyright message in the site footer will change to:
 `Copyright © John Doe · All Rights Reserved`
 
-== Screenshots ==
-
-1. Genesis Footer Builder: Brand name and copyrights duration
-1. Genesis Footer Builder: Select Privacy policy and Disclaimer pages
-1. Genesis Footer Builder: Register and insert the footer menu
-1. Genesis Footer Builder: Custom Footer Copyrights area
-
 == Changelog ==
 
+= Version 1.1 =
+
+**New:** You can now use your own Genesis Affiliate Link in the footer credits for monetization.
+
+* Added the Genesis Affiliate Link field to enable user to set an affiliate link for Genesis.
+* Added the shortcode *[gfb-affiliate-link]* to output Genesis Affiliate Link as set up in the plugin options.
+* Minor fixes to the plugin core files.
+* Added an upgrade routine to the plugin. Plugin files now include gfb-upgrade.php.
+
 = Version 1.0 =
-Stable version.
+
+Initial Release.
+
+== Upgrade Notice ==
+
+= 1.1 =
+This version adds a new cool feature to the plugin. You can now use your own Genesis Affiliate Link in the footer credits for monetization.
+
+= 1.0 =
+This is the initial release of the plugin.
