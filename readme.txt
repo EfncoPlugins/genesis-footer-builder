@@ -91,6 +91,10 @@ The copyright message in the site footer will change to:
 
 == Changelog ==
 
+= Version 1.1.1 =
+
+* Bug Fix: Resolved filter output conflict (issue noticed in few Genesis child themes). 
+
 = Version 1.1 =
 
 **New:** You can now use your own Genesis Affiliate Link in the footer credits for monetization.
@@ -98,13 +102,16 @@ The copyright message in the site footer will change to:
 * Added the Genesis Affiliate Link field to enable user to set an affiliate link for Genesis.
 * Added the shortcode *[gfb-affiliate-link]* to output Genesis Affiliate Link as set up in the plugin options.
 * Minor fixes to the plugin core files.
-* Added an upgrade routine to the plugin. Plugin files now include gfb-upgrade.php.
+* Added an upgrade routine to the plugin.
 
 = Version 1.0 =
 
 Initial Release.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+This version resolves filter output issue.
 
 = 1.1 =
 This version adds a new cool feature to the plugin. You can now use your own Genesis Affiliate Link in the footer credits for monetization.
