@@ -5,7 +5,7 @@
  * Plugin Name: Genesis Footer Builder
  * Plugin URI: https://www.binaryturf.com/genesis-footer-builder
  * Description: Helps build a custom footer for Genesis or Genesis child-themes.
- * Version: 1.1
+ * Version: 1.1.1
  * Author: Aniket Ashtikar
  * Author URI: https://www.binaryturf.com
  * License: GPL-2.0+
@@ -118,7 +118,8 @@ function gfb_loader() {
 				
 	}
 	
-	add_filter( 'genesis_footer_output', 'gfb_customized_footer', 10, 3 );
+	/** Hook the footer output filter used by the plugin, possibly last in the queue **/
+	add_filter( 'genesis_footer_output', 'gfb_customized_footer', 12, 3 );
 	
 }
 

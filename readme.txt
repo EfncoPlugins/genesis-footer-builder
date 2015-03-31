@@ -91,6 +91,10 @@ The copyright message in the site footer will change to:
 
 == Changelog ==
 
+= Version 1.1.1 =
+
+* Bug Fix: Resolved filter output conflict (issue noticed in few Genesis child themes). 
+
 = Version 1.1 =
 
 **New:** You can now use your own Genesis Affiliate Link in the footer credits for monetization.
@@ -105,6 +109,9 @@ The copyright message in the site footer will change to:
 Initial Release.
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+This version resolves filter output issue.
 
 = 1.1 =
 This version adds a new cool feature to the plugin. You can now use your own Genesis Affiliate Link in the footer credits for monetization.
