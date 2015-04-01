@@ -91,7 +91,7 @@ The copyright message in the site footer will change to:
 
 == Changelog ==
 
-= Version 1.1.1 =
+= Version 1.1.2 =
 
 * Bug Fix: Fixed the bug related to updating the affiliate link setting. 
 
