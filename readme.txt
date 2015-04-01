@@ -93,6 +93,10 @@ The copyright message in the site footer will change to:
 
 = Version 1.1.1 =
 
+* Bug Fix: Fixed the bug related to updating the affiliate link setting. 
+
+= Version 1.1.1 =
+
 * Bug Fix: Resolved filter output conflict (issue noticed in few Genesis child themes). 
 
 = Version 1.1 =
@@ -109,6 +113,9 @@ The copyright message in the site footer will change to:
 Initial Release.
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+This version resolves the bug related to the affiliate link setting.
 
 = 1.1.1 =
 This version resolves filter output issue.
