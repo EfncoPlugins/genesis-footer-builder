@@ -30,8 +30,8 @@ function gfb_update_11() {
 
 	//* Update settings
 	gfb_update_trigger( array(
-		'gfb_settings_version'   => '1.0',
-		'gfb_affiliate_link'	=>	'http://my.studiopress.com/themes/genesis',
+		'gfb_settings_version'  =>	'1.0',
+		'gfb_affiliate_link'	=>	gfb_get_option( 'gfb_affiliate_link' ) ? gfb_get_option( 'gfb_affiliate_link' ) : 'http://my.studiopress.com/themes/genesis',
 	) );
 
 }
@@ -45,15 +45,30 @@ add_action( 'admin_init', 'gfb_safe_upgrade', 20 );
 
 function gfb_safe_upgrade() {
 	
+	$version = gfb_get_option( 'gfb_settings_version' );
+	
 	//* Check if this is the latest version
-	if ( genesis_get_option( 'gfb_settings_version', null, false ) >= GFB_SETTINGS_VER )
+	if ( ( $version >= GFB_SETTINGS_VER ) )
 		return;
 	
 	//* Update the plugin to 1.1
-	if ( genesis_get_option( 'gfb_settings_version', null, false ) < '1.0' )
+	if ( gfb_get_option( 'gfb_settings_version' ) < '1.0' )
 		gfb_update_11();
 
 	//* Maybe, we add some notices to notify about the update, later
 	do_action( 'gfb_updated' );
 	
 }
+
+/*add_filter( 'update_plugin_complete_actions', 'gfb_complete_upgrade', 10, 2 );
+
+function gfb_complete_upgrade( array $actions, $plugin ) {
+
+	$gfb_exists = get_plugin( 'genesis-footer-builder' );
+	
+	if ( 'genesis-footer-builder' !== $plugin )
+		return $actions;
+
+	return '<a href=" ' . admin_url( 'admin.php?page=genesis-footer-builder' ) . '">Click here to complete the upgrade</a>';
+
+}*/

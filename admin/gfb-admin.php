@@ -86,26 +86,26 @@ class Gfb_Admin extends Genesis_Admin_Boxes {
 	/** Sanitizing the plugin options **/
 	function sanitizer_filters() {
 		
-		genesis_add_option_filter( 'one_zero', GFB_SETTINGS_FIELD, array(
+		genesis_add_option_filter( 'one_zero', $this->settings_field, array(
 			'gfb_footer_menu',
-			'gfb_date_format',
+			'gfb_date_format'
 		));
 		
-		genesis_add_option_filter( 'no_html', GFB_SETTINGS_FIELD, array(
-			'gfb_brand',
+		genesis_add_option_filter( 'no_html', $this->settings_field, array(
+			'gfb_brand'
 		));
 		
-		genesis_add_option_filter( 'absint', GFB_SETTINGS_FIELD, array(
+		genesis_add_option_filter( 'absint', $this->settings_field, array(
 			'gfb_privacy',
-			'gfb_disclaimer',
+			'gfb_disclaimer'
 		));
 		
-		genesis_add_option_filter( 'safe_html', GFB_SETTINGS_FIELD, array(
-			'gfb_output',
+		genesis_add_option_filter( 'safe_html', $this->settings_field, array(
+			'gfb_output'
 		));
 		
-		genesis_add_option_filter( 'url', GFB_SETTINGS_FIELD, array(
-			'gfb_affiliate_link',
+		genesis_add_option_filter( 'url', $this->settings_field, array(
+			'gfb_affiliate_link'
 		));
 		
 	}
