@@ -5,7 +5,7 @@
  * Plugin Name: Genesis Footer Builder
  * Plugin URI: https://www.binaryturf.com/genesis-footer-builder
  * Description: Helps build a custom footer for Genesis or Genesis child-themes.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: Aniket Ashtikar
  * Author URI: https://www.binaryturf.com
  * License: GPL-2.0+
@@ -184,7 +184,7 @@ add_filter( 'genesis_toggles', 'gfb_toggles' );
 
 function gfb_toggles( $toggles ) {
 	
-	$toggles = array(
+	$gfb_toggle = array(
 	
 		'gfb_current_date'	=>	array( '#genesis-footer-builder\\[gfb_current_date\\]', '#gfb-custom-date', '_unchecked' ),
 		'gfb_date'			=>	array( '#genesis-footer-builder\\[gfb_date_format\\]', '#gfb-date-format-unset', '_unchecked' ),
@@ -192,6 +192,8 @@ function gfb_toggles( $toggles ) {
 		'gfb_date_end'		=>	array( '#genesis-footer-builder\\[gfb_date_format\\]', '#gfb-date-format-set', '_checked' ),
 	
 	);
+	
+	$toggles = array_merge( $toggles, $gfb_toggle );
 	
 	return $toggles;
 	

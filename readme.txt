@@ -2,8 +2,8 @@
 Contributors: varun21, aniash_29, ruchika_wp
 Tags: genesis, genesiswp, genesis footer, footer customization
 Requires at least: 3.6
-Tested up to: 4.2
-Stable tag: 1.1.2
+Tested up to: 4.1.1
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,23 +85,28 @@ The plugin provides the shortcodes for each of the plugin options. Once, you've 
 Example: Once, you've set the *Brand Name* option to *John Doe*, you can use [gfb-brand] shortcode as follows:
 
 Add the following to *Custom Footer Copyrights* textarea:
-`Copyright &copy; [gfb-brand] &middot; All Rights Reserved`
+`Copyright © [gfb-brand] · All Rights Reserved`
 The copyright message in the site footer will change to:
 `Copyright © John Doe · All Rights Reserved`
 
 == Changelog ==
 
+= Version 1.1.3 =
+
+* Fixed: Fixed the plugin code to resolve Genesis toggles conflict.
+* Fixed: Updated the nav menu filter to *gfb_menu* (previously set to genesis_do_nav) which can be used to filter the GFB footer menu arguments.
+
 = Version 1.1.2 =
 
-* Bug Fix: Fixed the bug related to updating the affiliate link setting. 
+* Fixed: Fixed the bug related to updating the affiliate link setting. 
 
 = Version 1.1.1 =
 
-* Bug Fix: Resolved filter output conflict (issue noticed in few Genesis child themes). 
+* Fixed: Resolved filter output conflict (issue noticed in few Genesis child themes). 
 
 = Version 1.1 =
 
-**New:** You can now use your own Genesis Affiliate Link in the footer credits for monetization.
+* **New:** You can now use your own Genesis Affiliate Link in the footer credits for monetization.
 
 * Added the Genesis Affiliate Link field to enable user to set an affiliate link for Genesis.
 * Added the shortcode *[gfb-affiliate-link]* to output Genesis Affiliate Link as set up in the plugin options.
@@ -113,6 +118,9 @@ The copyright message in the site footer will change to:
 Initial Release.
 
 == Upgrade Notice ==
+
+= 1.1.3 =
+This version addresses the fix to minor bugs in plugin core files. Update recommended.
 
 = 1.1.2 =
 This version resolves the bug related to the affiliate link setting.

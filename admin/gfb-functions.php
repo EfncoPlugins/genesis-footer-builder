@@ -134,7 +134,7 @@ function gfb_menu() {
 		$nav_markup_close = genesis_html5() ? '</nav>' : '</div>';
 		$nav_output       = $nav_markup_open . $nav . $nav_markup_close;
 		
-		echo apply_filters( 'genesis_do_nav', $nav_output, $nav, $args );
+		echo apply_filters( 'gfb_menu', $nav_output, $nav, $args );
 		
 	}
 	
@@ -198,10 +198,10 @@ function gfb_customized_footer( $genesis_output ) {
 	else {
 
 		/** The output has been customized. Output as is **/
-		return $output;
+		return do_shortcode( $output );
 		
 	}
 	
-	return  $genesis_output;	
+	return do_shortcode( $genesis_output );
 
 }
